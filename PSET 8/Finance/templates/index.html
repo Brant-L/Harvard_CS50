@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th colspan="5">Current Holdings</th>
+            </tr>
+            <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Name</th>
+                <th scope="col">Shares</th></th>
+                <th scope="col">Price (USD)</th>
+                <th scope="col">Total (USD)</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}
+            {% if row.shares != 0 %}
+                <tr>
+                    <td>{{ row.symbol }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.shares }}</td>
+                    <td>{{ row.price }}</td>
+                    <td>{{ row.total }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Cash</th>
+                <th scope="col">{{ cash_usd }}</th>
+                <th scope="col"></th>
+                <th scope="col">Cash + Holdings</th></th>
+                <th scope="col">{{ grand_total }}</th>
+            </tr>
+        </thead>
+    </table>
+{% endblock %}
